@@ -63,6 +63,16 @@ export const TABS_ROUTES: Routes = [
           },
         ],
       },
+       {
+        path: 'test',
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('../Test/test').then(m => m.TestPage),
+          },
+        ],
+      },
       {
         path: '',
         redirectTo: '/app/tabs/schedule',

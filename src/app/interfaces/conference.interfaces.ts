@@ -15,13 +15,14 @@ export interface Speaker {
 export interface Session {
   hide?: boolean;
   name: string;
-  location: string;
+  location?: string;
   description?: string;
-  speakerNames: string[];
-  timeStart: string;
-  timeEnd: string;
-  tracks: string[];
-  id: string;
+  speakerNames?: string[];
+  timeStart?: string;
+  timeEnd?: string;
+  timeSlot?: string; // Added for simplified schedule
+  tracks?: string[];
+  id?: string;
   speakers?: Speaker[];
 }
 
@@ -33,7 +34,8 @@ export interface Group {
 
 export interface ScheduleDay {
   date: string;
-  groups: Group[];
+  groups?: Group[]; // Made optional for simplified schedule
+  sessions?: Session[]; // Added for simplified schedule
   shownSessions?: number;
 }
 

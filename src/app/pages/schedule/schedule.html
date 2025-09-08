@@ -1,13 +1,6 @@
 <ion-header translucent="true">
   <ion-toolbar>
     <ion-title>Schedule</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="presentFilter()">
-        <span>
-          <ion-icon slot="icon-only" name="options"></ion-icon>
-        </span>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -18,25 +11,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list #scheduleList [hidden]="shownSessions === 0">
-    @for (group of groups; track $index) {
-    <ion-item-group [hidden]="group.hide">
-      <ion-item-divider sticky>
-        <ion-label> {{group.time}} </ion-label>
-      </ion-item-divider>
-
-      @for (session of group.sessions; track session.id) {
-      <ion-item routerLink="/app/tabs/schedule/session/{{session.id}}">
-        <ion-label>
-          <h3>{{session.name}}</h3>
-          <p>
-            {{session.timeStart}} &mdash; {{session.timeEnd}}:
-            {{session.location}}
-          </p>
-        </ion-label>
-      </ion-item>
-      }
-    </ion-item-group>
+  <ion-list [hidden]="shownSessions === 0">
+    @for (session of sessions; track $index) {
+    <ion-item>
+      <ion-label>
+        <h3>{{session.name}}</h3>
+        <p>{{session.timeSlot}}</p>
+      </ion-label>
+    </ion-item>
     }
   </ion-list>
 

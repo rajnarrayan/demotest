@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { addIcons } from 'ionicons';
@@ -7,7 +7,6 @@ import {
   logoInstagram,
   logoTwitter,
   logoVimeo,
-  options,
   search,
   shareSocial,
 } from 'ionicons/icons';
@@ -15,7 +14,6 @@ import {
 import { LowerCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-  AlertController,
   Config,
   IonButton,
   IonButtons,
@@ -38,13 +36,11 @@ import {
   IonTitle,
   IonToolbar,
   LoadingController,
-  ModalController,
   ToastController,
 } from '@ionic/angular/standalone';
-import { Group, Session } from '../../interfaces/conference.interfaces';
+import { Session } from '../../interfaces/conference.interfaces';
 import { ConferenceService } from '../../providers/conference.service';
 import { UserService } from '../../providers/user.service';
-import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
@@ -68,29 +64,21 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    ModalController,
-    AlertController,
     LoadingController,
     ToastController,
     Config,
   ],
 })
 export class SchedulePage implements OnInit {
-  // Gets a reference to the list element
-  @ViewChild('scheduleList', { static: true }) scheduleList: IonList;
-
   ios: boolean;
   queryText = '';
-  excludeTrackNames: string[] = [];
   shownSessions: number;
-  groups: Group[] = [];
+  sessions: Session[] = [];
   confDate: string;
 
   constructor(
-    public alertCtrl: AlertController,
     public confService: ConferenceService,
     public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController,
     public router: Router,
     public routerOutlet: IonRouterOutlet,
     public toastCtrl: ToastController,
@@ -99,7 +87,6 @@ export class SchedulePage implements OnInit {
   ) {
     addIcons({
       search,
-      options,
       shareSocial,
       logoVimeo,
     });
@@ -109,35 +96,19 @@ export class SchedulePage implements OnInit {
   ngOnInit() {
     this.ios = this.config.get('mode') === 'ios';
     this.queryText = '';
-    this.excludeTrackNames = [];
     this.shownSessions = 0;
-    this.groups = [];
+    this.sessions = [];
     this.confDate = '';
     this.loadSchedule();
   }
 
   loadSchedule() {
     this.confService
-      .getTimeline(0, this.queryText, this.excludeTrackNames, 'all')
+      .getTimeline(0, this.queryText, 'all')
       .subscribe(data => {
         this.shownSessions = data.shownSessions;
-        this.groups = data.groups;
+        this.sessions = data.sessions;
         this.router.navigate(['/schedule']); // Redirect to /schedule after loading
       });
-  }
-
-  async presentFilter() {
-    const modal = await this.modalCtrl.create({
-      component: ScheduleFilterPage,
-      presentingElement: this.routerOutlet.nativeEl,
-      componentProps: { excludedTracks: this.excludeTrackNames },
-    });
-    await modal.present();
-
-    const { data } = await modal.onWillDismiss();
-    if (data) {
-      this.excludeTrackNames = data;
-      this.loadSchedule();
-    }
   }
 }

@@ -58,7 +58,7 @@ export class SessionDetailPage {
   }
 
   ionViewWillEnter() {
-    this.confService.load().subscribe(data => {
+    this.confService.loadFullConferenceData().subscribe(data => {
       if (
         data &&
         data.schedule &&
