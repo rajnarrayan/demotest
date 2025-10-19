@@ -1,0 +1,89 @@
+{
+  "schedule": [
+    {
+      "date": "2047-05-17",
+      "sessions": [
+        {
+          "name": "Breakfast",
+          "timeSlot": "8:00 am — 9:00 am"
+        },
+        {
+          "name": "Getting Started with Ionic",
+          "timeSlot": "9:30 am — 9:45 am"
+        },
+        {
+          "name": "Ionic Tooling",
+          "timeSlot": "9:45 am — 10:00 am"
+        },
+        {
+          "name": "University of Ionic",
+          "timeSlot": "9:15 am — 9:30 am"
+        },
+        {
+          "name": "Migrating to Ionic",
+          "timeSlot": "10:00 am — 10:15 am"
+        },
+        {
+          "name": "What's New in Angular",
+          "timeSlot": "10:15 am — 10:30 am"
+        },
+        {
+          "name": "The Evolution of Ionicons",
+          "timeSlot": "10:15 am — 10:30 am"
+        },
+        {
+          "name": "Ionic Pro",
+          "timeSlot": "10:45 am — 11:00 am"
+        },
+        {
+          "name": "Ionic Workshop",
+          "timeSlot": "11:00 am — 11:45 am"
+        },
+        {
+          "name": "Community Interaction",
+          "timeSlot": "11:30 am — 11:50 am"
+        },
+        {
+          "name": "Navigation in Ionic",
+          "timeSlot": "11:30 am — 12:00 pm"
+        },
+        {
+          "name": "Lunch",
+          "timeSlot": "12:00 pm — 1:00 pm"
+        },
+        {
+          "name": "Ionic in the Enterprise",
+          "timeSlot": "1:00 pm — 1:15 pm"
+        },
+        {
+          "name": "Ionic Worldwide",
+          "timeSlot": "1:15 pm — 1:30 pm"
+        },
+        {
+          "name": "The Ionic Package",
+          "timeSlot": "1:30 pm — 2:00 pm"
+        },
+        {
+          "name": "Push Notifications in Ionic",
+          "timeSlot": "2:00 pm — 2:30 pm"
+        },
+        {
+          "name": "Ionic Documentation",
+          "timeSlot": "2:30 pm — 2:45 pm"
+        },
+        {
+          "name": "UX in Ionic",
+          "timeSlot": "2:45 pm — 3:00 pm"
+        },
+        {
+          "name": "Bulding with Ionic and Angular",
+          "timeSlot": "3:00 pm — 3:30 pm"
+        },
+        {
+          "name": "Mobile States",
+          "timeSlot": "3:30 pm — 3:45 pm"
+        }
+      ]
+    }
+  ]
+}

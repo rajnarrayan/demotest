@@ -54,11 +54,18 @@ const payload = {
      // 👈 request body (use {} if no payload required)
   );
 }*/
-loadSimplifiedScheduleData() { 
+/*loadSimplifiedScheduleData() { 
 
   return this.http.get<{ schedule: ScheduleDay[] }>(
     'https://localhost:7150/Dashboard/GetAllScheduleGet',{}
-     // 👈 request body (use {} if no payload required)
+     
+  );
+}*/
+loadSimplifiedScheduleData() { 
+
+  return this.http.post<{ schedule: ScheduleDay[] }>(
+    'https://mobileapi.neonintelli.com/Dashboard/GetAllSchedule',{}
+     
   );
 }
 
